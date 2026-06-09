@@ -1,2 +1,4 @@
 *.d
 *.o
+generator/generator
+generator/generator.exe

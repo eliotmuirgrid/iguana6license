@@ -1,18 +1,25 @@
-This license generator needs more testing.
+# Iguana 6 License Generator
 
-Can you help?
+Can you help with this utility?
 
-Usage:
+## Usage
 
+```sh
 ./generator <Iguana ID> <VERSION>
+```
 
-The version defaults to "3".  You could try "4" and "5".
+The version defaults to `3`. You could also try `4` or `5`.
 
-I am not sure that it matters?
+I am not sure whether the version number matters.
 
-To be honest the maintainence of this utility was not well managed.  It got altered
-and could do with some help finding which versions of Iguana it works for.
+To be honest, maintenance of this utility was not well managed. It was altered over time and could use some help determining which versions of Iguana it actually works with.
 
-I could do with help confirming it compiles on Linux, Mac OS X and Windows.
+I would also appreciate help confirming that it compiles on:
+
+* Linux
+* macOS
+* Windows
+
+Zoom link:
 
 https://interfaceware.zoom.us/my/eliotmuir
