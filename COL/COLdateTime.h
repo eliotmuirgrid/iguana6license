@@ -221,8 +221,6 @@ public:
    COLstring format(const char* lpszFormat) const;
    //COLstring Format(unsigned int nFormatID) const;
    
-   void printOn(COLostream& Stream) const;
-
    void fromString(const COLstring& String);// day/month/year  hour:min:sec
    void fromStringYearFirst(const COLstring& String);// YYYY-MM-DD  HH:MM:SS
 
@@ -294,8 +292,6 @@ public:
    COLdateTimeSpan operator/(double) const;
 
 
-   void printOn(COLostream& Stream) const;
-
    void setDateTimeSpan(long lDays, int nHours, int nMins, int nSecs);
 
 // Implementation
@@ -305,8 +301,6 @@ public:
 };
 
 COL_DLL COLostream& operator<<(COLostream& Stream, const COLdateTimeSpan& Span);
-
-COLstring COLformatDateTimeOffset(const COLdateTime& DateTime);
 
 // a timestamp structure - just plain old data - no ctor, no dtor.
 struct COLtimeStamp

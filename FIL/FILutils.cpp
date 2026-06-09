@@ -915,21 +915,6 @@ void FILgetTempDirectory(COLstring& TemporaryDirectory)
    }
 }
 
-COLstring FILgetTempFileName()
-{
-   char FileName[L_tmpnam+1];
-   char* pFileName;
-   pFileName = tmpnam(FileName);
-   if (pFileName != NULL)
-   {
-      return FileName;
-   }
-   else
-   {
-      COL_THROW_STRERROR_PLAIN("Unable to create a temporary file name.");
-   }
-}
-
 #ifdef WIN32
 wchar_t* FILmangleFileNameForWindows(const COLstring& FileName, COLstring* pMangled) {
    COL_FUNCTION(FILmangleFileNameForWindows);
@@ -1014,21 +999,6 @@ void FILdeleteFileIfExists(const COLstring& FilePath, bool RemoveReadOnly) {
    if (!FilePath.is_null() && FILfileExists(FilePath)){
       FILremove(FilePath, RemoveReadOnly);
    }
-}
-
-bool FILisSymbolicLink(const COLstring& FileName)
-{
-#ifdef WIN32
-   return false;
-#else
-   struct stat64 FileStat;
-   if (-1 == lstat64(FileName.c_str(), &FileStat))
-   {
-      COL_THROW_STRERROR_PLAIN("Failed to resolve if  " << FileName << " is a symbolic link.");
-   }
-
-   return ((FileStat.st_mode & S_IFLNK) == S_IFLNK);
-#endif
 }
 
 void FILchangeFileSize(const COLstring& FileName, COLuint64 NewFileSize) {

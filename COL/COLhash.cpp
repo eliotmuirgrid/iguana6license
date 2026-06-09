@@ -30,7 +30,7 @@ COLindex COLhash<COLstring>::defaultHash(const COLstring& Key)
    {
       //TODO replace all one letter variables with meaningful names
       //TODO add some comments for block of code, eliminate magic values
-      register COLuint32 HashIncrement;
+      COLuint32 HashIncrement;
       COLuint32 ByteIncrement = sizeof(COLuint32);
       COLuint32 ByteIndex;
       COLuint32 c;

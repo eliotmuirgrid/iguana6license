@@ -10,8 +10,6 @@
 //
 // Author: Henry Tran
 // Date: July 27, 2004 
-//
-//
 //---------------------------------------------------------------------------
 #include "Precomp.h"
 #pragma hdrstop
@@ -98,10 +96,19 @@ int main( int argc, const char** argv )
          DRGinformation RegistrationInformation;
 	 RegistrationInformation.onInitialized();
 
+        // COLcout << argc << "args." << newline;
+
 	 if (argc < 2) {
-            COLcout << "IguanaLicense <id>" << newline;
+            COLcout << "IguanaLicense <id> <version>" << newline;
 	    return 0;
-         } 
+         }
+         const char* IguanaVersion = DRGinformation::DBD_LICENSE_VERSION;
+         if (argc == 3) {
+            COLcout << "Activate version control." << newline;
+            IguanaVersion = argv[2];
+         }
+         COLcout << "Version:" << IguanaVersion << newline;
+        
 
 	 COLstring IguanaId = argv[1];
 	 RegistrationInformation.setMaxCountOfConnection(0);
@@ -116,7 +123,7 @@ int main( int argc, const char** argv )
                              IguanaId.size(),
                              DRGinformation::DBD_LICENSE_PRODUCT_NAME,
                              strlen(DRGinformation::DBD_LICENSE_PRODUCT_NAME),
-                             DRGinformation::DBD_LICENSE_VERSION,
+                             IguanaVersion, 
                              strlen(DRGinformation::DBD_LICENSE_VERSION) );
 
          //COLcout << newline << "-----" << newline;

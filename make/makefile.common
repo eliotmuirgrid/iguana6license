@@ -49,7 +49,7 @@ else	# POSIX
     OBJECTS  := $(patsubst %Windows.o,,$(OBJECTS))  # Remove *Windows.* files - these are windows specific
     OBJECTS  := $(patsubst %win32.o,,$(OBJECTS))    # Remove *win32.* files - these are windows specific
     CFLAGS   := -MMD -I../ 
-    CXXFLAGS := -MMD -I../ -std=c++11 -DCHM_UNIX  $(TRACE_LICENSE) $(ADDRESS_SANITIZE)
+    CXXFLAGS := -MMD -I../ -Wno-error -std=c++11 -DCHM_UNIX  $(TRACE_LICENSE) $(ADDRESS_SANITIZE)
     DEFAULT_LDFLAGS := -lstdc++ -lm $(ADDRESS_SANITIZE)
     CCACHE   := $(shell command -v ccache  2> /dev/null)
     ifdef CCACHE

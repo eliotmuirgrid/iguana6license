@@ -1,4 +1,4 @@
-TARGET=IguanaLicense
+TARGET=generator
 
 
 DIRS=\

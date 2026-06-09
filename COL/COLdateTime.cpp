@@ -1233,154 +1233,6 @@ int COLdateTime::setUpdatedTime(int nHour, int nMin, int nSec)
    return setDateTime(year(), month(), day(), nHour, nMin, nSec);
 }
 
-
-COLstring COLformatDateTimeOffset(const COLdateTime& DateTime)
-{
-   if(!DateTime.offsetIsDefined())
-   {
-      return "";
-   }
-   char Buffer[32];
-   if(DateTime.offsetInMinutes()>=0)
-   {
-      int Hours = DateTime.offsetInMinutes() / 60;
-      int Minutes = DateTime.offsetInMinutes() % 60;
-      sprintf(Buffer, "+%02d%02d", Hours, Minutes);
-   }
-   else
-   {
-      int Hours = (-DateTime.offsetInMinutes()) / 60;
-      int Minutes = (-DateTime.offsetInMinutes()) % 60;
-      sprintf(Buffer, "-%02d%02d", Hours, Minutes);
-   }
-   return Buffer;
-}
-
-COLstring COLdateTime::format(const char* pFormat) const
-{
-   // Original behaviour.
-   struct tm tmTemp = {0};
-   if (status() == null) {
-      return "";
-   } else if (status() == invalid || !_COLTmFromOleDate(pMember->dt, tmTemp)) {
-      return "Invalid Date";
-   }
-   _COLTmConvertToStandardFormat(tmTemp);
-
-   // Produce the output one %-escape at a time.  This way we can skip
-   // unknown sequences if strftime() returns 0 as an error (this is not
-   // standard behaviour, but observed under Windows).  This code DOES
-   // NOT THROW since not all implementations will return 0 on invalid
-   // conversion specifications, and we cannot assume which codes will
-   // be supported (so we don't validate the input ourselves).
-   //
-   COLstring Out;
-   if(pFormat) while(*pFormat) {
-      // Copy everything up to the first % from pFormat to Out.
-      size_t n = strcspn(pFormat, "%");
-      if(n) {
-         Out.append(pFormat, n);
-         pFormat += n;
-         if(!*pFormat) break;  // We're done.
-      }
-      // Now process a conversion.  Most sequences are two chars long,
-      // so we make that assumption here and fix-up as needed later.
-      n = 2;
-      switch(pFormat[1]) {
-      case '\0':  // Degenerate case: single '%' at end of string.
-         n = 1;
-         /* no break */
-      case '%':
-         Out.append(1, '%');
-         break;
-      case 'Z':
-         // BUG (original behaviour): %Z is supposed to be the
-         // timezone abbrev., like "EST".
-         /* no break */
-      case 'z':
-         // We have to do this ourselves since we can't pack timezone
-         // information into all "struct tm" values on all platforms.
-         Out += COLformatDateTimeOffset(*this);
-         break;
-      case 'E':
-      case 'O':
-         // POSIX locale extension, three characters long.
-         if(pFormat[2] && pFormat[2] != '%') n = 3;
-         /* no break */
-      default:
-         // Extract all n characters of the conversion specification,
-         // and let strftime() process it in isolation.
-         char fmt[8], buf[128];
-         memcpy(fmt, pFormat, n);
-         fmt[n] = '\0';
-         size_t ok = strftime(buf, sizeof buf, fmt, &tmTemp);
-         if(ok) {
-            Out.append(buf, ok);
-         } else {
-            Out.append(fmt, n);
-         }
-      }
-      pFormat += n;
-   }
-   return Out;
-}
-
-void COLdateTime::printOn(COLostream& Stream) const
-{
-   try
-   {
-      if (isNull())
-      {
-         Stream << "<null>";
-      }
-      else if (status() == invalid)
-      {
-         Stream << "(invalid)";
-      }
-      else
-      {
-         Stream << dayOfWeekString(true) << COL_T(", ") << monthString(true) << ' '
-                << dayOfMonthString() << COL_T(", ") << year() << COL_T(" @ ");
-
-         if((hour() % 12) <= 9)
-         {
-            if(hour() % 12 == 0)
-            {
-               Stream << COL_T("12");
-            }
-            else
-            {
-            Stream << '0' << hour() % 12;
-            }
-         }
-         else
-         {
-            Stream << hour() % 12;
-         }
-         
-         Stream  << ':';
-
-         if(minute() <= 9)
-         {
-            Stream << '0';
-         }
-       
-         Stream << minute() << ':';
-         
-         if(second() <= 9)
-         {
-            Stream << '0';
-         }
-
-         Stream << second() << ' ' << meridianString();
-      }
-   }
-   catch(COLerror& Error)
-   {
-      Stream << "Invalid datetime (" << Error << ')';
-   }
-}
-
 // TODO - using sscanf is a hack we are reduced to because Windoze doesn't
 // have a strptime implementation - we either need an alternative or find a
 // free - non GNU! implementation.
@@ -1415,12 +1267,6 @@ void COLdateTime::fromStringYearFirst(const COLstring& String) {
       COL_ERROR_STREAM_PLAIN(COL_T("Couldn't parse date '") << String << "'.  Required format is YYYY-MM-DD HH:MM:DD", COLerror::PreCondition);
    }
    setDateTime( nYear, nMonth, nDay, nHour, nMin, nSec );
-}
-
-COLostream& operator<<(COLostream& Stream, const COLdateTime& DateTime)
-{
-   DateTime.printOn(Stream);
-   return Stream;
 }
 
 void COLdateTime::CheckRange()
@@ -1685,27 +1531,6 @@ void COLdateTimeSpan::CheckRange()
       setStatus(invalid);
 }
 
-void COLdateTimeSpan::printOn(COLostream& Stream) const
-{
-   COLint32 TimeArray[4] = { days(), hours(), minutes(), seconds() };
-   COLuint32 TimeUnitCount = 4 - (!TimeArray[3] + !TimeArray[2] + !TimeArray[1] + !TimeArray[0]);
-
-   for (COLuint32 TimeUnitIndex = 0; TimeUnitIndex < 4; TimeUnitIndex++)
-   {
-      if (TimeArray[TimeUnitIndex])
-      {
-         Stream << TimeArray[TimeUnitIndex] << ' ' << COLdateTimeSpan::TIME_UNITS[TimeUnitIndex];
-         if (TimeArray[TimeUnitIndex] > 1)
-         {
-            Stream << 's';
-         }
-         if (TimeUnitCount > 1)
-         {
-            Stream << ' ';
-            TimeUnitCount--;
-         }
-      }
-   }
 
 //   if (days() != 0)
 //   {
@@ -1723,13 +1548,6 @@ void COLdateTimeSpan::printOn(COLostream& Stream) const
 //   {
 //      Stream << seconds() << COL_T(" seconds ");
 //   }
-}
-
-COLostream& operator<<(COLostream& Stream, const COLdateTimeSpan& Span)
-{
-   Span.printOn(Stream);
-   return Stream;
-}
 
 double COLdateTimeSpan::totalDays() const
 {

@@ -42,7 +42,11 @@
 #   define FILwrite           write
 #   define FILread            read
 #   define FILcommit          fsync
-#   define FILstat            stat64
+#ifdef __APPLE__
+   #   define FILstat          stat
+#else
+   #   define FILstat          stat64
+#endif
 #   define FILaccess          access
 #   define FILchdir           chdir
 #   define FILrmdir           rmdir
