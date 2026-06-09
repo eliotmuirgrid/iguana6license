@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="VC9_Optimized"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		Optimization="3"
+		InlineFunctionExpansion="2"
+		FavorSizeOrSpeed="1"
+		WholeProgramOptimization="true"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		AdditionalOptions="/LTCG"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		LinkIncremental="1"
+		LinkTimeCodeGeneration="1"
+	/>
+</VisualStudioPropertySheet>

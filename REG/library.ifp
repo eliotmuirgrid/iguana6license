@@ -1,0 +1,7 @@
+GUID=C92321E0-A37C-63A7-D5EA-0BD004B6E072
+REGguid.cpp
+REGprecomp.cpp:platform=windows
+REGregistry.cpp:platform=windows
+REGguid.h
+REGprecomp.h:platform=windows
+REGregistry.h

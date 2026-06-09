@@ -1,0 +1,13 @@
+GUID=BF698250-C3A4-15FD-8CD1-C7526947AF69
+RGNhash.cpp
+RGNmachineId.cpp:platform=windows
+RGNmachineIdPosix.cpp:platform=posix
+RGNprecomp.cpp:platform=windows
+RGNhash.h
+RGNmacAddressBSD.h:platform=posix
+RGNmacAddressLinux.h:platform=posix
+RGNmacAddressNone.h:platform=posix
+RGNmacAddressSolaris.h:platform=posix
+RGNmachineId.h
+RGNobfuscate.h
+RGNprecomp.h:platform=windows

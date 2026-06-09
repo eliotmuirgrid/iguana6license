@@ -1,0 +1,13 @@
+GUID=72BE559C-D798-4E9C-A807-5A0CD294565E
+DRGfilterDecrypt.cpp
+DRGfilterEncrypt.cpp
+DRGiguanaId.cpp
+DRGinformation.cpp
+DRGprecomp.cpp:platform=windows
+DRGserialization.cpp
+DRGfilterDecrypt.h
+DRGfilterEncrypt.h
+DRGiguanaId.h
+DRGinformation.h
+DRGprecomp.h:platform=windows
+DRGserialization.h

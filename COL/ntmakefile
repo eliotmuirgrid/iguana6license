@@ -1,0 +1,8 @@
+msdev:
+	msdev COL.dsp /make "COL - Win32 Release"
+
+msbuild.x64:
+	msbuild COL.sln /p:Configuration=Release /p:Platform=x64
+
+msbuild.x86:
+	msbuild COL.sln /p:Configuration=Release /p:Platform=Win32

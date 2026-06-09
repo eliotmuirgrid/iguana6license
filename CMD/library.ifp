@@ -1,0 +1,9 @@
+GUID=B15F092D-DC2D-D3C6-2006-6CE3715E4404
+CMDlineParser.cpp
+CMDprecomp.cpp:platform=windows
+CMDprogressMeter.cpp
+CMDextraParamDescription.h
+CMDlineFlag.h
+CMDlineParser.h
+CMDprecomp.h:platform=windows
+CMDprogressMeter.h

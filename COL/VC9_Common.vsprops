@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="VC9_Common"
+	OutputDirectory="build_VC9_$(ProjectName)_$(PlatformName)_$(ConfigurationName)"
+	IntermediateDirectory="build_VC9_$(ProjectName)_$(PlatformName)_$(ConfigurationName)"
+	>
+	<Tool
+		Name="VCBscMakeTool"
+		SuppressStartupBanner="true"
+	/>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories=".."
+		PreprocessorDefinitions="WIN32;CHM_WIN;CHM_VC9;COL_ASSERTS_ON;COL_DLL_EXPORTS"
+		StringPooling="true"
+		ExceptionHandling="1"
+		RuntimeLibrary="0"
+		EnableFunctionLevelLinking="true"
+		RuntimeTypeInfo="true"
+		BrowseInformation="1"
+		WarningLevel="3"
+		SuppressStartupBanner="true"
+		DebugInformationFormat="3"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		SuppressStartupBanner="true"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		GenerateManifest="false"
+		IgnoreAllDefaultLibraries="true"
+		GenerateDebugInformation="true"
+		GenerateMapFile="true"
+		MapExports="true"
+	/>
+	<Tool
+		Name="VCManifestTool"
+		EmbedManifest="false"
+	/>
+</VisualStudioPropertySheet>

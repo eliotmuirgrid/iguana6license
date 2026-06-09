@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="VC9_include_openssl_32"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="../openssl_pc/pc_vc9_32/inc32"
+	/>
+</VisualStudioPropertySheet>

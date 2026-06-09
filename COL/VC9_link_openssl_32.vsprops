@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="VC9_link_openssl_32"
+	>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalDependencies="../openssl_pc/pc_vc9_32/out32/libeay32.lib ../openssl_pc/pc_vc9_32/out32/ssleay32.lib"
+	/>
+</VisualStudioPropertySheet>
