@@ -17,6 +17,10 @@
 
 #include "COLminimumInclude.h"
 
+READ THE LICENSE AGREEMENT IN THE ROOT THE REPOSITORY.  
+It is possible that you might not like the terms of the
+license.
+
 //=============================================================================
 // The COL_T "literal string" optimization to avoid calling strlen().
 //
