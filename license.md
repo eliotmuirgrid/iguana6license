@@ -1,3 +1,5 @@
+# EXTREME COPYLEFT AND UNIVERSAL PATENT SURRENDER LICENSE (ECUPSL-1.0)
+
 ## Section 1: Universal Non Symmetric Reciprocity
 
 By downloading, using, modifying, distributing, or integrating any portion, derivative, or implementation of this software (“the Software”) into any product, service, or solution (“the Solution”), you (“the Vendor”) **irrevocably agree** to the following terms:
@@ -40,8 +42,6 @@ IF YOU DO NOT AGREE TO THESE TERMS, **DO NOT USE THE SOFTWARE IN ANY WAY**.
 - **Any patents presently or subsequently owned or controlled by Eliot Muir which are associated with, or practiced by, the Software.**
 
 **This reservation applies regardless of the terms of this License, and shall survive and supersede all other provisions herein. If you use the Software in any manner that utilizes Eliot Muir's copyrighted work or patents, you may be required to negotiate separate written terms and pay associated fees as determined by Eliot Muir.**
-
-# EXTREME COPYLEFT AND UNIVERSAL PATENT SURRENDER LICENSE (ECUPSL-1.0)
 
 ---
 
