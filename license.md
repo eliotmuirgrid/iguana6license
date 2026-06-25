@@ -47,7 +47,7 @@ IF YOU DO NOT AGREE TO THESE TERMS, **DO NOT USE THE SOFTWARE IN ANY WAY**.
 
 ## Section 6: Window for Negotiating Alternative Terms
 
-If you are a vendor or provider wishing to negotiate alternative, more commercially reasonable terms, **you must contact the copyright holder (Eliot Muir) no later than August 31st, 2024**.  
+If you are a vendor or provider wishing to negotiate alternative, more commercially reasonable terms, **you must contact the copyright holder (Eliot Muir) no later than August 31st, 2026**.  
 **Absent a separately executed written agreement prior to this date,** you are permanently bound by the terms of this license for all usage after August 31st, 2024.
 
 ---
